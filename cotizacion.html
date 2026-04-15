@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Cotización de Muebles</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body { background: #f4f6f9; font-family: 'Segoe UI'; }
+.card { border-radius: 20px; animation: fadeIn 0.8s; }
+input, select { border-radius: 10px !important; }
+button { border-radius: 12px !important; font-weight: bold; transition: 0.3s; }
+button:hover { transform: scale(1.05); }
+.progress { height: 20px; border-radius: 10px; }
+
+@keyframes fadeIn {
+from {opacity:0; transform: translateY(20px);}
+to {opacity:1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div style="background: linear-gradient(90deg,#1B5E20,#25D366); color:white; padding:20px;">
+  <h2 class="text-center">Cotización Inteligente - Muebles Alca</h2>
+</div>
+
+<div class="container mt-4">
+  <div class="row">
+
+    <!-- FORM -->
+    <div class="col-lg-6 col-md-6 col-12 mb-3">
+      <div class="card p-4 shadow">
+        <h4 class="text-center">Datos</h4>
+
+        <input class="form-control mb-2" id="nombre" placeholder="Nombre">
+        <select class="form-control mb-2" id="tipo">
+          <option>Soporte simple</option>
+          <option>Soporte doble</option>
+          <option>Personalizado</option>
+        </select>
+
+        <input type="number" class="form-control mb-2" id="altura" placeholder="Altura (cm)">
+
+        <button class="btn btn-success w-100" onclick="calcular()">Calcular</button>
+        <h4 class="text-center mt-2">Precio: <span id="precio">-</span></h4>
+      </div>
+    </div>
+
+    <!-- ENCUESTA -->
+    <div class="col-lg-6 col-md-6 col-12 mb-3">
+      <div class="card p-4 shadow">
+
+        <h4 class="text-center">Encuesta de la escala del 1😔 al 5😊</h4>
+
+        <div class="progress mb-3">
+          <div id="barra" class="progress-bar bg-success" style="width:0%">0%</div>
+        </div>
+
+        <!-- PREGUNTAS -->
+        <input type="number" id="p1" placeholder="1. ¿La página fue fácil de usar?" min="1" max="5" class="form-control mb-2">
+        <input type="number" id="p2" placeholder="2. ¿La navegación fue clara?" min="1" max="5" class="form-control mb-2">
+        <input type="number" id="p3" placeholder="3. ¿El proceso fue rápido?" min="1" max="5" class="form-control mb-2">
+        <input type="number" id="p4" placeholder="4. ¿El diseño te pareció atractivo?" min="1" max="5" class="form-control mb-2">
+        <input type="number" id="p5" placeholder="5. ¿Las imágenes ayudan a entender el producto?" min="1" max="5" class="form-control mb-2">
+        <input type="number" id="p6" placeholder="6. ¿El precio te parece adecuado?" min="1" max="5" class="form-control mb-2">
+        <input type="number" id="p7" placeholder="7. ¿El tiempo estimado es razonable?" min="1" max="5" class="form-control mb-2">
+        <input type="number" id="p8" placeholder="8. ¿Te generó confianza el sistema?" min="1" max="5" class="form-control mb-2">
+        <input type="number" id="p9" placeholder="9. ¿Usarías esta página nuevamente?" min="1" max="5" class="form-control mb-2">
+        <input type="number" id="p10" placeholder="10. ¿Qué tan satisfecho estás en general?" min="1" max="5" class="form-control mb-2">
+
+        <button class="btn btn-primary w-100 mt-2" onclick="guardarYExportar()">Guardar</button>
+        <button class="btn btn-secondary w-100 mt-2" onclick="limpiar()">Limpiar</button>
+
+        <p id="mensaje" class="text-center mt-2"></p>
+
+        <h5 class="text-center">Promedio: <span id="promedio">-</span></h5>
+        <p id="interpretacion" class="text-center fw-bold"></p>
+
+        <canvas id="grafico"></canvas>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+let precioFinal = 0;
+let grafico = null;
+
+// CALCULAR PRECIO
+function calcular(){
+  let tipo = document.getElementById("tipo").value;
+  let altura = parseFloat(document.getElementById("altura").value);
+  let mensaje = document.getElementById("mensaje");
+
+  if(isNaN(altura)){
+    mensaje.innerText = "⚠️ Ingresa una altura válida";
+    return false;
+  }
+
+  if(tipo === "Soporte simple") precioFinal = 30;
+  else if(tipo === "Soporte doble") precioFinal = 50;
+  else precioFinal = 80;
+
+  precioFinal += altura * 0.5;
+
+  document.getElementById("precio").innerText = "S/ " + precioFinal.toFixed(2);
+  return true;
+}
+
+// PROGRESO
+let preguntas = document.querySelectorAll("input[id^='p']");
+let barra = document.getElementById("barra");
+
+preguntas.forEach(p => {
+  p.addEventListener("input", actualizarBarra);
+});
+
+function actualizarBarra(){
+  let llenos = [...preguntas].filter(x => x.value !== "").length;
+  let porcentaje = (llenos / 10) * 100;
+
+  barra.style.width = porcentaje + "%";
+  barra.innerText = porcentaje + "%";
+}
+
+// GUARDAR + TODO
+function guardarYExportar(){
+
+  let mensaje = document.getElementById("mensaje");
+  let nombre = document.getElementById("nombre").value.trim();
+  let tipo = document.getElementById("tipo").value;
+
+  if(nombre === ""){
+    mensaje.innerText = "⚠️ Ingresa tu nombre";
+    return;
+  }
+
+  if(!calcular()) return;
+
+  let valores = [];
+
+  for(let i=1;i<=10;i++){
+    let v = parseFloat(document.getElementById("p"+i).value);
+    if(isNaN(v)){
+      mensaje.innerText = "⚠️ Completa todas las preguntas";
+      return;
+    }
+    valores.push(v);
+  }
+
+  // PROMEDIO
+  let promedio = valores.reduce((a,b)=>a+b,0)/10;
+  document.getElementById("promedio").innerText = promedio.toFixed(2);
+
+  let texto = "";
+  if(promedio >= 4) texto = "😊 Alta satisfacción";
+  else if(promedio >= 3) texto = "😐 Satisfacción media";
+  else texto = "😞 Baja satisfacción";
+
+  document.getElementById("interpretacion").innerText = texto;
+
+  // GRÁFICO
+  let ctx = document.getElementById("grafico").getContext("2d");
+
+  if(grafico) grafico.destroy();
+
+  grafico = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["P1","P2","P3","P4","P5","P6","P7","P8","P9","P10"],
+      datasets: [{
+        label: "Resultados",
+        data: valores
+      }]
+      
+    }
+
+    
+  });
+
+  // 🔥 ENVÍO A GOOGLE SHEETS (ARREGLADO)
+  fetch("https://script.google.com/macros/s/AKfycbxEj1NqvrPCznlwzvhw4t-oDaI8aaYldp1Ks1tAvx3Yc_fAWuzxAQE90HXHMs0gwQOA/exec", {
+    method: "POST",
+    mode: "no-cors", // 🔥 CLAVE
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      nombre: nombre,
+      tipo: tipo,
+      precio: precioFinal,
+      p1: valores[0],
+      p2: valores[1],
+      p3: valores[2],
+      p4: valores[3],
+      p5: valores[4],
+      p6: valores[5],
+      p7: valores[6],
+      p8: valores[7],
+      p9: valores[8],
+      p10: valores[9]
+    })
+  });
+
+  // MENSAJE (aunque no-cors no devuelve respuesta)
+  mensaje.innerText = "✅ Datos enviados correctamente";
+
+  setTimeout(() => mensaje.innerText = "", 3000);
+}
+
+// LIMPIAR
+function limpiar(){
+  document.querySelectorAll("input").forEach(i=>i.value="");
+
+  document.getElementById("precio").innerText = "-";
+  barra.style.width="0%";
+  barra.innerText="0%";
+  document.getElementById("promedio").innerText="-";
+  document.getElementById("interpretacion").innerText="";
+  document.getElementById("mensaje").innerText="";
+
+  if(grafico){
+    grafico.destroy();
+    grafico = null;
+  }
+}
+
+</script>
+</body>
+</html>

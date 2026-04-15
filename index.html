@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soportes para Platos - Muebles Alca</title>
+  <meta name="description" content="Soportes ergonómicos para platos de perros y gatos. Fabricados en melamina de alta calidad. Contacto por WhatsApp." />
+  <!-- Bootstrap 5 CDN -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root{--accent:#1B5E20;--accent-2:#25d366}
+    body{font-family: Arial, Helvetica, sans-serif;background:#f7f7f7}
+    .hero{background:linear-gradient(90deg, rgba(27,94,32,0.95), rgba(37,211,102,0.9));color:white;padding:3.5rem 1rem;border-radius:0 0 18px 18px}
+    .brand{font-weight:700;letter-spacing:0.4px}
+    .card-img-top{object-fit:cover;height:220px;border-radius:8px}
+    .badge-stock{position:absolute;top:12px;left:12px}
+    .floating-whatsapp{position:fixed;right:18px;bottom:18px;z-index:1050}
+    .product-grid{margin-top:2rem}
+    .features li{margin-bottom:.4rem}
+    footer{margin-top:3rem;padding:2rem 0;background:#fff}
+    @media (max-width:576px){.hero{padding:2rem 1rem;text-align:center}.card-img-top{height:180px}}
+
+    
+      .floating-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    .footer-custom {
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  }
+
+  .footer-custom p {
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .footer-custom .social-icons a {
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+  }
+
+  .footer-custom .social-icons a:hover {
+    transform: scale(1.2);
+  }
+
+  /* Colores oficiales TikTok */
+  .tiktok-icon i {
+    color: #000000; /* base negra */
+    text-shadow:
+      1px 1px 0 #ff0050,  /* rojo TikTok */
+      -1px -1px 0 #00f2ea; /* celeste TikTok */
+  }
+
+  /* Colores oficiales Instagram con compatibilidad */
+  .instagram-icon i {
+    background: radial-gradient(circle at 30% 107%, 
+      #fdf497 0%, 
+      #fdf497 5%, 
+      #fd5949 45%, 
+      #d6249f 60%, 
+      #285AEB 90%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Responsivo */
+  @media (max-width: 576px) {
+    .footer-custom .container {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.6rem;
+    }
+  }
+
+
+
+
+    .floating-whatsapp a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      animation: pulse 2s infinite;
+    }
+
+    .floating-whatsapp a:hover {
+      transform: scale(1.15);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+
+    /* Animación de sobresalir (latido) */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+
+  </style>
+</head>
+<body>
+
+<!-- Header / Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="imagenes/alca2.png" class="img-fluid" style="width:70px;height:70px;object-fit:cover;border-radius:8px">
+      <div class="d-flex flex-column">
+        <span class="brand">Muebles Alca Pet</span>
+        <small class="text-muted">Soportes para platos - calidad y estilo</small>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#beneficios">Beneficios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" href="cotizacion.html">Cotizar</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero / Banner -->
+<section class="hero">
+  <div class="container d-flex flex-column flex-md-row align-items-center gap-4">
+    <div class="flex-fill">
+      <h1 class="display-6 fs-3 fs-md-2">Soportes ergonómicos para platos de perros y gatos</h1>
+      <p class="lead">Mejora la postura de tu mascota, evita derrames y dale un toque decorativo a tu hogar. Fabricados en melamina resistente, acabados a medida.</p>
+      <div class="d-flex flex-column flex-sm-row gap-2 mt-3">
+        <a class="btn btn-light btn-lg" href="#productos">Ver productos</a>
+        <a class="btn btn-outline-light btn-lg" href="#contacto">Contactar</a>
+      </div>
+    </div>
+    <div class="d-none d-md-block" style="width:320px">
+      <img src="imagenes/soporte1.jpeg" alt="soporte" class="img-fluid rounded-3 shadow-sm">
+    </div>
+  </div>
+</section>
+
+<!-- Productos -->
+<section class="container product-grid" id="productos">
+  <div class="d-flex justify-content-between align-items-end">
+    <div>
+      <h2>Productos destacados</h2>
+      <p class="text-muted">Elige el tamaño y acabado que prefieras.</p>
+    </div>
+    <div>
+      <a class="btn btn-outline-secondary" href="productos.html">Ver catálogo completo</a>
+
+    </div>
+  </div>
+
+  <div class="row g-3 mt-2" id="productList">
+    <!-- Card ejemplo 1 -->
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card position-relative h-100 shadow-sm product-card" data-name="Soporte Bone Style" data-price="S/ 49.99" data-stock="12" data-desc="Soporte alto para perros medianos. Altura 25 cm, acabado en melamina blanco." data-image="imagenes/soporte5.jpeg">
+        <span class="badge bg-success badge-stock">En stock</span>
+        <img src="imagenes/soporte5.jpeg" class="card-img-top" alt="Soporte Alto">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Soporte Bone Style</h5>
+          <p class="card-text text-muted small">Diseño innovador con cortes en forma de hueso a los costados. Estilo y resistencia para tu mascota.</p>
+          <div class="mt-auto d-flex justify-content-between align-items-center">
+            <strong class="fs-6">S/ 49.99</strong>
+            <div>
+              <button class="btn btn-sm btn-outline-primary me-2 btn-view" data-bs-toggle="modal" data-bs-target="#productModal">Ver producto</button>
+              <a class="btn btn-sm btn-success" href="#" onclick="openWhatsApp('Soporte Bone Style', 'S/ 49.99')">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card ejemplo 2 -->
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card position-relative h-100 shadow-sm product-card" data-name="BoneFit Natural" data-price="S/ 69.99" data-stock="5" data-desc="Soporte bajo ideal para perros pequeños. Altura 12 cm, fácil de limpiar." data-image="imagenes/soporte20.jpeg">
+        <span class="badge bg-success badge-stock">En stock</span>
+        <img src="imagenes/soporte20.jpeg" class="card-img-top" alt="Soporte Bajo">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">BoneFit Natural</h5>
+          <p class="card-text text-muted small">Diseño compacto y estable.</p>
+          <div class="mt-auto d-flex justify-content-between align-items-center">
+            <strong class="fs-6">S/ 69.99</strong>
+            <div>
+              <button class="btn btn-sm btn-outline-primary me-2 btn-view" data-bs-toggle="modal" data-bs-target="#productModal">Ver producto</button>
+              <a class="btn btn-sm btn-success" href="#" onclick="openWhatsApp('BoneFit Natural', 'S/ 69.99')">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card ejemplo 3 -->
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card position-relative h-100 shadow-sm product-card" data-name="Urban One" data-price="S/ 54.99" data-stock="5" data-desc="Soporte doble para tus dos mascotas. Acabado premium." data-image="imagenes/soporte21.jpeg">
+        <span class="badge bg-success badge-stock">En stock</span>
+        <img src="imagenes/soporte21.jpeg" class="card-img-top" alt="Soporte Doble">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Urban One</h5>
+          <p class="card-text text-muted small">Perfecto para hogares con dos mascotas.</p>
+          <div class="mt-auto d-flex justify-content-between align-items-center">
+            <strong class="fs-6">S/ 54.99</strong>
+            <div>
+              <button class="btn btn-sm btn-outline-primary me-2 btn-view" data-bs-toggle="modal" data-bs-target="#productModal">Ver producto</button>
+              <a class="btn btn-sm btn-success" href="#" onclick="openWhatsApp('Urban One', 'S/ 54.99')">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Beneficios -->
+<section class="container mt-4" id="beneficios">
+  <div class="row align-items-center bg-white p-4 shadow-sm rounded-3">
+    <div class="col-md-6">
+      <h3>¿Por qué elegir nuestros soportes?</h3>
+      <ul class="features list-unstyled text-muted">
+        <li>• Mejora la postura y digestión de tu mascota.</li>
+        <li>• Fácil limpieza y mantenimiento.</li>
+        <li>• Diseños a medida según el tamaño y decoración.</li>
+        <li>• Material resistente y duradero.</li>
+      </ul>
+    </div>
+    <div class="col-md-6 text-center d-none d-md-block">
+      <img src="https://images.pexels.com/photos/7210458/pexels-photo-7210458.jpeg" 
+     alt="Perro usando soporte elevado" 
+     class="img-fluid rounded-3 shadow-sm">
+
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="container mt-4" id="contacto">
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="bg-white p-4 shadow-sm rounded-3">
+        <h4>Contáctanos</h4>
+        <p class="text-muted">Escríbenos por WhatsApp para consultas, pedidos o medidas a medida.</p>
+        <form id="contactForm" onsubmit="submitContact(event)">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input class="form-control" required id="cname">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Teléfono / WhatsApp</label>
+            <input class="form-control" required id="cphone">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mensaje</label>
+            <textarea class="form-control" rows="3" id="cmsg" required></textarea>
+          </div>
+          <button class="btn btn-success">Enviar por WhatsApp</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="bg-white p-4 shadow-sm rounded-3">
+        <h5>Datos</h5>
+        <p class="mb-1"><strong>Tel / WhatsApp:</strong> <span id="whatsappNumber">+51 977913733</span></p>
+        <p class="mb-0">Envía foto de tu mascota si quieres que te ayudemos a elegir la altura ideal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer-custom text-center py-4 mt-5">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <p class="mb-2 mb-md-0 text-muted">
+      <strong>Muebles Alca</strong> • Soportes para platos - Todos los derechos reservados
+    </p>
+    <div class="social-icons d-flex gap-3">
+      <a href="http://tiktok.com/@muebles_alca0805" target="_blank" title="TikTok" class="tiktok-icon">
+        <i class="bi bi-tiktok"></i>
+      </a>
+      <a href="https://www.instagram.com/muebles_alca0508?igsh=MXFqNnI5MGw5bXk5cQ==" target="_blank" title="Instagram" class="instagram-icon">
+        <i class="bi bi-instagram"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+
+<!-- Floating WhatsApp -->
+<div class="floating-whatsapp">
+  <a id="waFloat" href="https://wa.me/51999999999" target="_blank" title="Chatea por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 16 16">
+      <path d="M13.601 2.344A7.57 7.57 0 0 0 8.004.333C3.943.333.645 3.63.645 7.691c0 1.353.354 2.678 1.027 3.844L.7 15.333l4-1.04a7.57 7.57 0 0 0 3.304.77h.001c4.061 0 7.358-3.297 7.358-7.358a7.54 7.54 0 0 0-2.462-5.361ZM8.004 14.31a6.61 6.61 0 0 1-3.167-.815l-.227-.128-2.373.618.635-2.314-.148-.237a6.608 6.608 0 0 1-1.011-3.442c0-3.645 2.966-6.61 6.61-6.61 1.764 0 3.42.687 4.663 1.932a6.55 6.55 0 0 1 1.947 4.678c0 3.645-2.966 6.61-6.61 6.61Zm3.61-4.946c-.197-.099-1.165-.574-1.345-.64-.18-.066-.311-.099-.442.1-.131.197-.505.64-.619.772-.115.131-.23.148-.427.05-.197-.099-.832-.307-1.586-.981-.586-.522-.981-1.165-1.098-1.362-.115-.197-.012-.304.087-.403.089-.089.197-.23.296-.345.099-.115.131-.197.197-.328.066-.131.033-.246-.017-.345-.05-.099-.442-1.06-.606-1.449-.16-.386-.323-.334-.442-.34-.115-.006-.246-.006-.377-.006a.729.729 0 0 0-.529.246c-.18.197-.689.672-.689 1.64 0 .967.705 1.899.803 2.03.099.131 1.386 2.118 3.361 2.971.47.203.84.325 1.127.416.474.151.905.129 1.246.078.38-.057 1.165-.477 1.33-.938.164-.462.164-.858.115-.938-.05-.082-.18-.131-.377-.23Z"/>
+    </svg>
+  </a>
+</div>
+
+<!-- Product Modal -->
+<div class="modal fade" id="productModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <img id="modalImage" src="https://via.placeholder.com/520x320.png?text=Producto" alt="" class="img-fluid rounded-3">
+          </div>
+          <div class="col-md-6">
+            <h4 id="modalPrice">S/ 0</h4>
+            <p id="modalDesc" class="text-muted">Descripción</p>
+            <p><strong>Stock: </strong><span id="modalStock">0</span></p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-success" id="modalBuy">Comprar por WhatsApp</button>
+              <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Cambia este número por tu WhatsApp (formato internacional sin espacios: 51999999999)
+  const WA_NUMBER = '51997913733';
+
+  // Abre WhatsApp con mensaje prellenado
+  function openWhatsApp(productName='', price=''){
+    const msg = encodeURIComponent(`Hola, quiero comprar: ${productName} - Precio: ${price}. ¿Está disponible?`);
+    const url = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+    window.open(url,'_blank');
+  }
+
+  
+
+  // Maneja formulario de contacto -> abre WhatsApp con los datos
+  function submitContact(e){
+    e.preventDefault();
+    const name = document.getElementById('cname').value.trim();
+    const phone = document.getElementById('cphone').value.trim();
+    const msg = document.getElementById('cmsg').value.trim();
+    const text = encodeURIComponent(`Hola, soy ${name} (${phone}). ${msg}`);
+    window.open(`https://wa.me/${WA_NUMBER}?text=${text}`,'_blank');
+  }
+
+  // Rellena modal con los datos de la tarjeta clickeada
+  document.querySelectorAll('.btn-view').forEach(btn=>{
+    btn.addEventListener('click',(e)=>{
+      const card = e.target.closest('.product-card');
+      const name = card.getAttribute('data-name');
+      const price = card.getAttribute('data-price');
+      const stock = card.getAttribute('data-stock');
+      const desc = card.getAttribute('data-desc');
+      const img = card.getAttribute('data-image');
+
+      document.getElementById('modalTitle').textContent = name;
+      document.getElementById('modalPrice').textContent = price;
+      document.getElementById('modalStock').textContent = stock;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalImage').src = img;
+
+      document.getElementById('modalBuy').onclick = ()=> openWhatsApp(name, price);
+    })
+  })
+
+  // Ajusta el botón flotante de WhatsApp para usar el WA_NUMBER
+  document.getElementById('waFloat').href = `https://wa.me/${WA_NUMBER}`;
+  document.getElementById('whatsappNumber').textContent = '+51 997913733';
+</script>
+</body>
+</html>
